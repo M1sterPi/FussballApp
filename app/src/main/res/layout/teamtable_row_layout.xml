@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:paddingVertical="4dp"
+    android:gravity="center_vertical"
+    >
+    <!-- RL = Row Layout  -->
+    <!-- RL = row_layouts sind das Layout für den RecyclerView -->
+    <TextView
+        android:id="@+id/rl_tv_place"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:layout_gravity="center_vertical"
+        />
+
+
+    <ImageView
+        android:id="@+id/rl_iv_logo"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        app:srcCompat="@drawable/a_1_fc_nuernberg" />
+
+    <TextView
+        android:id="@+id/rl_tv_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:layout_gravity="center_vertical"
+        android:text="teamteamteamteam" />
+
+    <TextView
+        android:id="@+id/rl_tv_goals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_gravity="center_vertical"
+        android:text="+12" />
+
+    <TextView
+        android:id="@+id/rl_tv_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="360dp"
+        android:layout_gravity="center_vertical"
+        android:text="12" />
+</FrameLayout>
