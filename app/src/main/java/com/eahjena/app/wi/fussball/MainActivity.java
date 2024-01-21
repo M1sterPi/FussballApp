@@ -3,6 +3,9 @@ package com.eahjena.app.wi.fussball;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Button;
+import android.content.Intent;
+
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    //Button deklarieren
+    private Button btn_table;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +34,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-      //  setSupportActionBar(binding.appBarMain.toolbar);
-      //  binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-           // @Override
-          //  public void onClick(View view) {
-            //    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            //            .setAction("Action", null).show();
-          //  }
-      //  });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -44,9 +42,23 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
                 .build();
-       // NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-       // NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-       // NavigationUI.setupWithNavController(navigationView, navController);
+
+
+
+        Button btnTable = findViewById(R.id.btn_table);
+
+        // Setze den OnClickListener für den Button
+        btnTable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Funktionalität für den Klick auf den Button
+                Intent i = new Intent(MainActivity.this, ActivityTabelle.class);
+                startActivity(i);
+            }
+        });
+
+
+
     }
 
     @Override

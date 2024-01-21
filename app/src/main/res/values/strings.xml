@@ -11,8 +11,8 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="button">Quiz</string>
-    <string name="tabelle">Ergebnisse</string>
-    <string name="ergebnisse">Tabelle</string>
+    <string name="tabelle">Tabelle</string>
+    <string name="ergebnisse">Ergebnisse</string>
     <string name="title_activity_tabelle">ActivityTabelle</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
