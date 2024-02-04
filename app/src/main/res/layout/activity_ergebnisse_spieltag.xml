@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!---Layout für die Activity Tabelle - Aktuelle Liga Tabelle -->
+<!-- Layout für die Activity Spielergebnisse -->
 
-
-<!---Schritt 7 c in der Anleitung - RecyclerView to Constraint Layout -->
+<!-- RecyclerView für das einzelne Ergebnis -->
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:id="@+id/activity_tabelle_sv"
+    android:id="@+id/activity_ergebnisse_spieltag_sv"
     android:layout_width="match_parent"
     android:layout_height="729dp"
     android:fillViewport="true"
@@ -17,16 +16,16 @@
     tools:layout_editor_absoluteX="1dp"
     tools:layout_editor_absoluteY="1dp">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_tabelle_cl"
+        android:id="@+id/activity_ergebnisse_spieltag_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".HomePage_Startseite">
 
+        <!-- Id auf ergebnisse_spieltag für das Row Layout wichtig -->
 
         <Button
-            android:id="@+id/btn_back_tabelle"
+            android:id="@+id/btn_back_ergebnisse_spieltag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="152dp"
@@ -37,14 +36,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!--- Recyclerview für jedes Item -->
-
+        <!-- RecyclerView Element für das Layout - Spielergebnisse -->
         <androidx.recyclerview.widget.RecyclerView
-
-            android:id="@+id/team_table"
+            android:id="@+id/ergebnisse_spieltag"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
 </ScrollView>
+

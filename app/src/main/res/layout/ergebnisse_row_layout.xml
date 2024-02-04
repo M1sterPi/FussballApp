@@ -1,0 +1,49 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="35dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:gravity="center_vertical">
+
+    <!-- RL = Row Layout  -->
+    <!-- RL = row_layouts sind das Layout für den RecyclerView -->
+    <!-- nächste Step, sind die Recylcerviewholder in den classen zu programmieren wie schon für teamtabel -->
+    <TextView
+        android:id="@+id/rl_tv_teamName1"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:gravity="center_vertical|end"
+        android:text="TeamName1" />
+
+    <ImageView
+        android:id="@+id/rl_iv_teamLogo1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:layout_marginLeft="-75dp"
+        app:srcCompat="@drawable/a_1_fc_nuernberg" />
+
+    <TextView
+        android:id="@+id/rl_tv_finalResult"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center_vertical|center"
+        android:text="12:34" />
+
+    <ImageView
+        android:id="@+id/rl_iv_teamLogo2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:layout_marginLeft="75dp"
+        app:srcCompat="@drawable/a_1_fc_nuernberg" />
+
+    <TextView
+        android:id="@+id/rl_tv_teamName2"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        android:gravity="center_vertical|start"
+        android:layout_alignParentRight="true"
+        android:text="TeamName2" />
+</RelativeLayout>

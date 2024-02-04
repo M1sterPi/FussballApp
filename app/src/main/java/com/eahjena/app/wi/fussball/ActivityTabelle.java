@@ -1,53 +1,49 @@
 package com.eahjena.app.wi.fussball;
 
-import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.os.Bundle;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 
-import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import com.eahjena.app.wi.fussball.databinding.ActivityTabelleBinding;
+/* Activity für die aktuelle Bundesligatabelle - Schritt 7 */
 
 public class ActivityTabelle extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
-    private ActivityTabelleBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_tabelle); /* wählt die View aus xml */
 
-        binding = ActivityTabelleBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        /* Button um auf das Menü zurück zu kommen erstellen */
 
-        setSupportActionBar(binding.toolbar);
+        Button btnBackTabelleToMain;
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_tabelle2);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-        /*binding.fab.setOnClickListener(new View.OnClickListener() {
+        btnBackTabelleToMain = (Button)findViewById(R.id.btn_back_tabelle);
+        btnBackTabelleToMain.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAnchorView(R.id.fab)
-                        .setAction("Action", null).show();
+            public void onClick(View view) { openActiviyMain();}
+        });
 
-        });*/
+
+
+
+        RecyclerView recyclerView = findViewById(R.id.team_table);
+        TableAdapter tableAdapter = new TableAdapter(this);
+        recyclerView.setAdapter( tableAdapter );
+        recyclerView.setLayoutManager( new LinearLayoutManager(this) );
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_activity_tabelle2);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
+    /* Methode für den Button */
+
+    public void openActiviyMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
+
 }
