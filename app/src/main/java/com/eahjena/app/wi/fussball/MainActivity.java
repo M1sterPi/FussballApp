@@ -7,13 +7,13 @@ import static com.eahjena.app.wi.fussball.MainApplication.tableTeamList;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,11 +36,13 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
 
+
     /* Button deklarieren */
 
     private Button btnTable;
     private Button btnErgebnisse;
     private Button btnMap;
+
 
 
 
@@ -248,6 +250,10 @@ public class MainActivity extends AppCompatActivity {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
+                //Wenn Internetverbindung besteht, dann speicher Daten
+                LocalDataManager.saveTableTeams(getApplicationContext(), tableTeamList);
+
+
                 String line;
                 data = "";
                 while((line = bufferedReader.readLine()) != null) {
@@ -294,15 +300,15 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-            } catch (MalformedURLException e) {
+            } catch (MalformedURLException | JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
               //  loadLocalData(); // Lade lokale Daten im Falle einer IOException
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
 
+                List<TableTeam> tableTeamList = LocalDataManager.loadTableTeams(getApplicationContext());
+
+            }
 
 
             // Progress Dialog wird entfernt / beendet

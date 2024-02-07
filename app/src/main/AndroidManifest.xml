@@ -28,6 +28,7 @@
         </activity>
 
         <activity android:name=".ActivityMap" />
+        <activity android:name=".LocalDataManager" />
 
 
         <activity android:name=".ActivitySpielDetail">
