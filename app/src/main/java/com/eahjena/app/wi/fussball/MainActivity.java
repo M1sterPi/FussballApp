@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         if(!MainApplication.isLoaded) {
             new fetchData().start();
 
-            // MainApplication.setData(this); - für erzeugung der Testdaten
+            // MainApplication.setData(this); - für Erzeugung der Testdaten
             MainApplication.isLoaded = true;
         }
 
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
 
 
-
+    // Handler kommunziert zwischen Hintergrundthread (Daten beziehen) und Mainthread
             mainHandler.post(new Runnable() {
                 @Override
 
@@ -221,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                // finish();
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -286,9 +288,11 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+              //  loadLocalData(); // Lade lokale Daten im Falle einer IOException
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
 
 
             // Progress Dialog wird entfernt / beendet
@@ -300,11 +304,17 @@ public class MainActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                     }
                 }
+
+
             });
 
-        }
-    }
 
+
+
+        }
+
+
+    }
 
 
 
