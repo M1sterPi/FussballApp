@@ -10,7 +10,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="button">Quiz</string>
+    <string name="button">Map</string>
     <string name="tabelle">Tabelle</string>
     <string name="ergebnisse">Ergebnisse</string>
     <string name="title_activity_tabelle">ActivityTabelle</string>

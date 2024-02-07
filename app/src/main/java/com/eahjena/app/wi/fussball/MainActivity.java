@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnTable;
     private Button btnErgebnisse;
+    private Button btnMap;
 
 
 
@@ -84,6 +85,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 openActiviyTabelle();
             }
+        });
+
+        /* Button Initialisieren - zum öffnen der Ergebnisse */
+
+
+        btnMap =(Button) findViewById(R.id.btn_map);
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { openActivityMap();}
         });
     }
 
@@ -341,6 +351,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void openActiviyErgebnisseSpieltag() {
         Intent intent = new Intent(this, ActivityErgebnisseSpieltag.class);
+        startActivity(intent);
+
+    }
+    public void openActivityMap() {
+        Intent intent = new Intent(this, ActivityMap.class);
         startActivity(intent);
     }
 }
