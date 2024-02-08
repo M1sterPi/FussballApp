@@ -1,4 +1,5 @@
 package com.eahjena.app.wi.fussball;
+// deklariert das Paket, in dem sich die Klasse befindet
 
 import android.content.Context;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,14 +9,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.List;
+// importiert die notwendigen Klassen
 
 
 public class GoalsAdapter extends RecyclerView.Adapter<com.eahjena.app.wi.fussball.GoalsAdapter.ViewHolder> {
-
+// Definiert GoalsAdpater als eine erweiterung des RecyclerView.Adapter mit dem spezifischen  ViewHolder-Typ GoalsAdapter.
+// Viewholder. dies ermöglicht die Verwendung des Adapters mit einem Recyclerview
     // private String[] localDataSet;
 
     Context context;
+    //Eine Instanz von Context die verwendet wird, um Zugriff auf Ressourcen und
+    // spezifische Anwendungsfunktionen zu erhalten.
     List<Goal> goals;
+    // eine Liste von Goal-Objekten die die Daten für jeden Eintrag im RecyclerView darstellen
 
     /**
      * Provide a reference to the type of views that you are using
@@ -24,6 +30,10 @@ public class GoalsAdapter extends RecyclerView.Adapter<com.eahjena.app.wi.fussba
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        //Definiert eine statische Subklasse ViewHolder, die von RecyclerView.viewholder erbt.
+        //Sie dient als Container für die Ansichtskomponenten eines Listenelements
+        //TextView Komponenten werden initialisiert, indem sie mittels finViewByID von
+        // der übergeheben Ansicht (view) referenziert werden
 
         private final TextView rlTvScoreMinute;
         private final TextView rltvGoalPlayerName;
@@ -52,6 +62,8 @@ public class GoalsAdapter extends RecyclerView.Adapter<com.eahjena.app.wi.fussba
      * Initialize the dataset of the Adapter.
      */
 
+    //Der Konstruktor des Adapters, der den Kontext und die Datenliste entgegennimmt
+    // und die entsprechenden Felder initialisiert
     public GoalsAdapter(Context context, List<Goal> goals) {
         this.context = context;
         this.goals = goals;
@@ -59,6 +71,9 @@ public class GoalsAdapter extends RecyclerView.Adapter<com.eahjena.app.wi.fussba
 
     // Create new views (invoked by the layout manager)
     @Override
+    //wird aufgerufen um neuen viewholder zu erstellen.
+    //diese Methode inflated  die Layoutdatei tore_row_layout auf und erstellt eine neue viewHolder Instanz
+    // mit dieser Ansicht
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
@@ -69,6 +84,9 @@ public class GoalsAdapter extends RecyclerView.Adapter<com.eahjena.app.wi.fussba
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
+    //wird aufgerufen um dne Inhalt des ViewHolder zu ersetzen.
+    // Methode bezieht das entsprechende Goal-Objekt aus der Liste basierend auf der Position und
+    // setzt die Texte der TextViews in der viewHolder-Instanz
     public void onBindViewHolder(ViewHolder viewHolder, final int position) {
 
         // Get element from your dataset at this position and replace the
@@ -82,6 +100,7 @@ public class GoalsAdapter extends RecyclerView.Adapter<com.eahjena.app.wi.fussba
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
+    //Gibt die Größe der Datenliste zurück, was dem RecylerView hilft, die Anzahl der darzustellenden elemnte zu bestimmen
     public int getItemCount() {
         return goals.size();
     }

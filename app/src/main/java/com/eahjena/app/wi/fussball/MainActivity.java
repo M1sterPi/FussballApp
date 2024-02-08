@@ -243,29 +243,42 @@ public class MainActivity extends AppCompatActivity {
 
 
             // Tabellen Teams
+            // Verbindung zur API wird aufgerufen, erstellt URL-Objekt
 
             try {
                 URL url = new URL("https://api.openligadb.de/getbltable/bl1/2023");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                //Holt InputStrom, der die Daten der Http Antwort enthält
                 InputStream inputStream = httpURLConnection.getInputStream();
+
+                //Erstellt einen bufferedReader, um die Daten aus dem InputStream effizient lesen zu können
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
                 //Wenn Internetverbindung besteht, dann speicher Daten
                 LocalDataManager.saveTableTeams(getApplicationContext(), tableTeamList);
 
-
+                //Deklariert eine Variable, um jede Zeile der Antwort zu speichern
                 String line;
+                //Initialisiert die Variable data als leeren string, um die gesamte Antwort darin zu sammeln
                 data = "";
+                //liest jede Zeile der Antwort und fügt sie zur data Variable hinzu,
+                // bis keine Zeilen mehr vorhanden sind
                 while((line = bufferedReader.readLine()) != null) {
                     data = data + line;
                 }
 
+                //überprüft, ob die Antwort nicht leer ist
                 if(!data.isEmpty()) {
+                    //wandelt den gesammelten String data in ei JSONArray um, weil
+                    // die API Antwort ein Array von Mannschaftsdaten ist
                     JSONArray result = new JSONArray(data);
 
+                    //iteriert durch jedes Element des JSON Arrays
                     for (int i  = 0; i < result.length(); i++) {
+                        //holt das aktuelle JSON Objekt, das die Daten einer Mannschaft enthält
                         JSONObject teamTable = result.getJSONObject(i);
-
+                        //extrahiert Infos aus dem JSON Objekt
                         int teamInfoId = teamTable.getInt("teamInfoId");
                         String teamName = teamTable.getString("teamName");
                         String shortName = teamTable.getString("shortName");
@@ -277,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
                         int opponentGoals = teamTable.getInt("opponentGoals");
                         int points = teamTable.getInt("points");
                         String teamIconUrl = teamTable.getString("teamIconUrl");
-
+                        //erstellt neues TableTeam Objekt
                         TableTeam tableTeam = new TableTeam(
                                 i + 1,
                                 teamInfoId,
@@ -293,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
                                 teamIconUrl
                         );
 
-
+                        //läd Mannschaftsicon
                         tableTeam.teamIcon = LoadImageFromWebOperations(teamIconUrl);
                         tableTeamList.add(tableTeam);
                     }
@@ -315,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
 
             mainHandler.post(new Runnable() {
                 @Override
+
                 public void run() {
                     if(progressDialog.isShowing()) {
                         progressDialog.dismiss();
